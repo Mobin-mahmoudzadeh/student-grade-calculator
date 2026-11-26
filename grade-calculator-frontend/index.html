@@ -170,6 +170,69 @@
         </div>
     </section>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // تابعی برای مدیریت هر ترم (ترم اول یا ترم دوم)
+        function setupTermCalculator(termId) {
+            const termSection = document.getElementById(termId);
+            if (!termSection) return;
 
+            const rows = termSection.querySelectorAll('tbody tr');
+            const calcBtn = termSection.querySelector('.btn-calc');
+            const gpaDisplay = termSection.querySelector('.gpa-value');
+
+            // با هر تغییر در نمرات، میانگین همان درس (خانه چهارم) به صورت زنده حساب شود
+            rows.forEach(row => {
+                const inputs = row.querySelectorAll('.grade-input');
+                const avgInput = row.querySelector('.subject-avg');
+
+                inputs.forEach(input => {
+                    input.addEventListener('input', () => {
+                        let sum = 0;
+                        let count = 0;
+
+                        inputs.forEach(inp => {
+                            let val = parseFloat(inp.value);
+                            if (!isNaN(val)) {
+                                sum += val;
+                                count++;
+                            }
+                        });
+
+                        // اگر حداقل یک نمره وارد شده باشد، میانگین آن درس حساب می‌شود
+                        if (count > 0) {
+                            let subjectAvg = sum / count;
+                            avgInput.value = subjectAvg.toFixed(2);
+                        } else {
+                            avgInput.value = "0.00";
+                        }
+                    });
+                });
+            });
+
+            // وقتی کاربر روی دکمه‌ی محاسبه‌ی معدل ترم کلیک می‌کند
+            calcBtn.addEventListener('click', () => {
+                let totalSum = 0;
+                let totalSubjects = rows.length;
+
+                rows.forEach(row => {
+                    const avgInput = row.querySelector('.subject-avg');
+                    let avgVal = parseFloat(avgInput.value);
+                    if (!isNaN(avgVal)) {
+                        totalSum += avgVal;
+                    }
+                });
+
+                // محاسبه‌ی معدل کل ترم (جمع میانگین درس‌ها تقسیم بر تعداد کل درس‌ها)
+                let termGpa = totalSum / totalSubjects;
+                gpaDisplay.textContent = termGpa.toFixed(2);
+            });
+        }
+
+        // راه‌اندازی برای ترم اول و ترم دوم
+        setupTermCalculator('term-1');
+        setupTermCalculator('term-2');
+    });
+</script>
 </body>
 </html>
