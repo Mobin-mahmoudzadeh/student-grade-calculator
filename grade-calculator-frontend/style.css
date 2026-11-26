@@ -1,0 +1,252 @@
+﻿/* تنظیمات پایه و فونت مدرن */
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg-color: #f1f5f9;
+    --card-bg: #ffffff;
+    --border-color: #cbd5e1;
+    --excel-header: #e2e8f0;
+    --excel-readonly: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --accent-green: #10b981;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* هدر کارنامه */
+.header-card {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border-top: 4px solid var(--primary-color);
+}
+
+.header-title h1 {
+    font-size: 1.5rem;
+    color: var(--text-main);
+}
+
+.header-title p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.student-info {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.student-info input {
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.student-info input:focus {
+    border-color: var(--primary-color);
+}
+
+/* باکس هر ترم */
+.term-section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.term-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--bg-color);
+}
+
+.term-badge {
+    background: #dbeafe;
+    color: var(--primary-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* استایل جدول شبیه به اکسل */
+.table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+table.excel-grid {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+    text-align: center;
+}
+
+table.excel-grid th {
+    background-color: var(--excel-header);
+    color: var(--text-main);
+    font-weight: 600;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+table.excel-grid td {
+    border: 1px solid var(--border-color);
+    padding: 0;
+    height: 46px;
+    position: relative;
+}
+
+/* ستون نام درس */
+table.excel-grid td.subject-name {
+    background-color: #f8fafc;
+    font-weight: 600;
+    text-align: right;
+    padding: 0 16px;
+    width: 22%;
+    color: var(--text-main);
+}
+
+/* سلول‌های ورودی شبیه اکسل */
+table.excel-grid input.cell-input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-main);
+    background: transparent;
+    outline: none;
+    transition: all 0.15s;
+}
+
+/* افکت فوکوس مثل سلول انتخاب شده در اکسل */
+table.excel-grid input.cell-input:focus {
+    background-color: #eff6ff;
+    box-shadow: inset 0 0 0 2px var(--primary-color);
+}
+
+/* حذف فلش‌های پیش‌فرض اینپوت عددی */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* ستون چهارم (میانگین درس) */
+table.excel-grid td.avg-cell {
+    background-color: #f0fdf4;
+    font-weight: bold;
+    color: #15803d;
+    width: 18%;
+}
+
+table.excel-grid td.avg-cell input {
+    font-weight: bold;
+    color: #15803d;
+    cursor: default;
+}
+
+/* بخش پایین هر ترم (معدل کل ترم) */
+.term-footer {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    background: var(--excel-readonly);
+    padding: 16px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.gpa-display {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.gpa-label {
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.gpa-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    background: #ffffff;
+    padding: 4px 18px;
+    border-radius: 8px;
+    border: 2px solid #bfdbfe;
+    min-width: 90px;
+    text-align: center;
+}
+
+.btn-calc {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-calc:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-calc:active {
+    transform: scale(0.98);
+}
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 640px) {
+    .header-card, .term-footer {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+    .gpa-display {
+        justify-content: center;
+    }
+}

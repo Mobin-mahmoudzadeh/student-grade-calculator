@@ -1,10 +1,175 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کارنامه هوشمند دانش‌آموز</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
+
+<div class="container">
+    <!-- هدر و مشخصات دانش‌آموز -->
+    <header class="header-card">
+        <div class="header-title">
+            <h1>کارنامه تحصیلی دانش‌آموز</h1>
+            <p>سیستم ثبت نمرات و محاسبه هوشمند معدل</p>
+        </div>
+        <div class="student-info">
+            <input type="text" id="student-name" placeholder="نام و نام خانوادگی دانش‌آموز">
+            <input type="text" id="student-grade" placeholder="پایه / کلاس (مثلاً نهم)">
+        </div>
+    </header>
+
+    <!-- بخش ترم اول -->
+    <section class="term-section" id="term-1">
+        <div class="term-header">
+            <h2>جدول نمرات نیم‌سال اول</h2>
+            <span class="term-badge">ترم اول</span>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="excel-grid">
+                <thead>
+                <tr>
+                    <th>نام درس</th>
+                    <th>نمره اول (خانه ۱)</th>
+                    <th>نمره دوم (خانه ۲)</th>
+                    <th>نمره سوم (خانه ۳)</th>
+                    <th>میانگین درس (خانه ۴)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-subject="math">
+                    <td class="subject-name">ریاضی</td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td class="avg-cell"><input type="text" class="cell-input subject-avg" readonly value="0.00"></td>
+                </tr>
+                <tr data-subject="physics">
+                    <td class="subject-name">فیزیک</td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td class="avg-cell"><input type="text" class="cell-input subject-avg" readonly value="0.00"></td>
+                </tr>
+                <tr data-subject="chemistry">
+                    <td class="subject-name">شیمی</td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td class="avg-cell"><input type="text" class="cell-input subject-avg" readonly value="0.00"></td>
+                </tr>
+                <tr data-subject="biology">
+                    <td class="subject-name">زیست‌شناسی</td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td class="avg-cell"><input type="text" class="cell-input subject-avg" readonly value="0.00"></td>
+                </tr>
+                <tr data-subject="geography">
+                    <td class="subject-name">جغرافیا</td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td class="avg-cell"><input type="text" class="cell-input subject-avg" readonly value="0.00"></td>
+                </tr>
+                <tr data-subject="psychology">
+                    <td class="subject-name">روانشناسی</td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td class="avg-cell"><input type="text" class="cell-input subject-avg" readonly value="0.00"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="term-footer">
+            <button type="button" class="btn-calc" id="calc-term-1">محاسبه معدل ترم اول</button>
+            <div class="gpa-display">
+                <span class="gpa-label">معدل کل ترم اول:</span>
+                <div class="gpa-value" id="gpa-term-1">0.00</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش ترم دوم -->
+    <section class="term-section" id="term-2">
+        <div class="term-header">
+            <h2>جدول نمرات نیم‌سال دوم</h2>
+            <span class="term-badge" style="background: #e0e7ff; color: #4338ca;">ترم دوم</span>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="excel-grid">
+                <thead>
+                <tr>
+                    <th>نام درس</th>
+                    <th>نمره اول (خانه ۱)</th>
+                    <th>نمره دوم (خانه ۲)</th>
+                    <th>نمره سوم (خانه ۳)</th>
+                    <th>میانگین درس (خانه ۴)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-subject="math">
+                    <td class="subject-name">ریاضی</td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td class="avg-cell"><input type="text" class="cell-input subject-avg" readonly value="0.00"></td>
+                </tr>
+                <tr data-subject="physics">
+                    <td class="subject-name">فیزیک</td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td class="avg-cell"><input type="text" class="cell-input subject-avg" readonly value="0.00"></td>
+                </tr>
+                <tr data-subject="chemistry">
+                    <td class="subject-name">شیمی</td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td class="avg-cell"><input type="text" class="cell-input subject-avg" readonly value="0.00"></td>
+                </tr>
+                <tr data-subject="biology">
+                    <td class="subject-name">زیست‌شناسی</td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td class="avg-cell"><input type="text" class="cell-input subject-avg" readonly value="0.00"></td>
+                </tr>
+                <tr data-subject="geography">
+                    <td class="subject-name">جغرافیا</td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td class="avg-cell"><input type="text" class="cell-input subject-avg" readonly value="0.00"></td>
+                </tr>
+                <tr data-subject="psychology">
+                    <td class="subject-name">روانشناسی</td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td><input type="number" class="cell-input grade-input" min="0" max="20" step="0.25" placeholder="-"></td>
+                    <td class="avg-cell"><input type="text" class="cell-input subject-avg" readonly value="0.00"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="term-footer">
+            <button type="button" class="btn-calc" id="calc-term-2">محاسبه معدل ترم دوم</button>
+            <div class="gpa-display">
+                <span class="gpa-label">معدل کل ترم دوم:</span>
+                <div class="gpa-value" id="gpa-term-2">0.00</div>
+            </div>
+        </div>
+    </section>
+</div>
 
 </body>
 </html>
